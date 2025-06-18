@@ -48,7 +48,7 @@ _DATASET_SPECS: dict[DlkDatasetId, _DatasetSpec] = {
 
 def get_dlk_dataset(dataset_id: DlkDatasetId):
     dataset_spec = _DATASET_SPECS[dataset_id]
-    dataset: Any = load_dataset(dataset_spec.name, dataset_spec.subset)
+    dataset: Any = load_dataset(dataset_spec.name, dataset_spec.subset, trust_remote_code=True)
     return {
         **_get_dlk_dataset(dataset_id, dataset, split="train", limit=3000),
         **_get_dlk_dataset(dataset_id, dataset, split="validation", limit=3000),
