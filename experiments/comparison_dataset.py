@@ -21,14 +21,9 @@ from repeng.datasets.elk.utils.limits import Limits, SplitLimits
 collections: list[DatasetCollectionId] = ["dlk", "repe", "got"]
 create_activations_dataset(
     tag="datasets_2024-02-23_truthfulqa_v1",
-    llm_ids=["Llama-2-13b-chat-hf"],
+    llm_ids=["Llama-2-7b-chat-hf"],
     dataset_ids=[
-        *[
-            dataset_id
-            for collection in collections
-            for dataset_id in resolve_dataset_ids(collection)
-        ],
-        "truthful_qa",
+        "truthful_qa"
     ],
     group_limits=Limits(
         default=SplitLimits(
