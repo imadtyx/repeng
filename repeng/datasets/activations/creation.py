@@ -87,7 +87,7 @@ def create_activations_dataset(
             ),
         )
         .upload(
-            f"s3://repeng/datasets/activations/{tag}.pickle",
+            f"./repeng/datasets/activations/{tag}.pickle",
             to="pickle",
         )
     ).get()
