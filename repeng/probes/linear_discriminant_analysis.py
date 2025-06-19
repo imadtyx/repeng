@@ -21,7 +21,7 @@ Regularization: None.
 from dataclasses import dataclass
 
 import numpy as np
-from jaxtyping import Bool, Float
+from jaxtyping import Array, Bool, Float
 from overrides import override
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 
@@ -35,7 +35,7 @@ class LdaProbe(BaseProbe):
     @override
     def predict(
         self,
-        activations: Float[np.ndarray, "n d"],  # noqa: F722
+        activations: Float[Array, "n d"],  # noqa: F722
     ) -> PredictResult:
         logits = self.model.decision_function(activations)
         return PredictResult(logits=logits)
@@ -43,7 +43,7 @@ class LdaProbe(BaseProbe):
 
 def train_lda_probe(
     *,
-    activations: Float[np.ndarray, "n d"],  # noqa: F722
+    activations: Float[Array, "n d"],  # noqa: F722
     labels: Bool[np.ndarray, "n"],  # noqa: F821
 ) -> LdaProbe:
     lda = LinearDiscriminantAnalysis()
